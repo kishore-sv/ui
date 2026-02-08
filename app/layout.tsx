@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Antigravity UI - Premium Animation Components",
+  title: "UI - Premium Animation Components",
   description: "Beautifully designed animation components for your next project.",
   icons: {
     icon: "/logo.svg",
