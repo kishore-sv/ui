@@ -3,10 +3,10 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight, Github, Sparkles, Zap, Shield, Layout, Palette } from "lucide-react"
-
 import { Button } from "@/components/ui/button"
-import { SiteHeader } from "@/components/site-header"
 import { Badge } from "@/components/ui/badge"
+import { SiteFooter } from "@/components/site-footer"
+import { SiteHeader } from "@/components/site-header"
 
 export default function LandingPage() {
   return (
@@ -117,13 +117,7 @@ export default function LandingPage() {
         </section>
       </main>
 
-      <footer className="border-t border-border/40 py-12 bg-muted/50">
-        <div className="container px-4 text-center">
-          <p className="text-sm text-muted-foreground">
-            Built with ❤️ by the Antigravity Team. The source code is available on <Link href="#" className="underline underline-offset-4 font-medium">GitHub</Link>.
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }
@@ -145,3 +139,4 @@ function FeatureCard({ icon, title, description, delay }: { icon: React.ReactNod
     </motion.div>
   )
 }
+
