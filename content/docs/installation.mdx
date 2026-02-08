@@ -1,0 +1,38 @@
+---
+title: Installation
+description: How to install and set up Antigravity UI in your project.
+---
+
+# Installation
+
+Antigravity UI is a collection of components that you can copy and paste into your project.
+
+## Prerequisites
+
+Before you start, make sure you have the following installed:
+
+- **Next.js** (App Router preferred)
+- **Tailwind CSS** (v3 or v4)
+- **Framer Motion**
+- **Lucide React**
+
+## Step 1: Install Dependencies
+
+Run the following command in your terminal:
+
+<CodeBlock title="terminal" code={`npm install framer-motion lucide-react clsx tailwind-merge`} />
+
+## Step 2: Add Utility File
+
+Create a `lib/utils.ts` (if you don't have it already from shadcn/ui):
+
+<CodeBlock title="lib/utils.ts" code={`import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}`} />
+
+## Step 3: Start adding components
+
+That's it! You can now browse the [Components](/docs/components/text-generate-effect) and start copying them into your project.

@@ -1,0 +1,109 @@
+---
+title: Hover Border Gradient
+description: A beautiful hover border gradient effect for buttons and containers.
+---
+
+# Hover Border Gradient
+
+A beautiful hover border gradient effect that animates when you hover over the component.
+
+<ComponentPreview name="Hover Border Gradient" code={`import { HoverBorderGradient } from "@/components/hover-border-gradient";
+
+export function HoverBorderGradientDemo() {
+  return (
+    <div className="flex justify-center text-center">
+      <HoverBorderGradient
+        containerClassName="rounded-full"
+        as="button"
+        className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+      >
+        <span>Aceternity UI</span>
+      </HoverBorderGradient>
+    </div>
+  );
+}`}>
+  <HoverBorderGradient
+    containerClassName="rounded-full"
+    as="button"
+    className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+  >
+    <span>Hover me for gradient</span>
+  </HoverBorderGradient>
+</ComponentPreview>
+
+## Installation
+
+### Copy the code
+
+<CodeBlock title="components/hover-border-gradient.tsx" code={`"use client";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
+
+export const HoverBorderGradient = ({
+  children,
+  containerClassName,
+  className,
+  as: Tag = "button",
+  duration = 1,
+  clockwise = true,
+  ...props
+}: {
+  children: React.ReactNode;
+  containerClassName?: string;
+  className?: string;
+  as?: React.ElementType;
+  duration?: number;
+  clockwise?: boolean;
+} & React.HTMLAttributes<HTMLElement>) => {
+  const [hovered, setHovered] = useState(false);
+
+  const movingBackground = (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      className="absolute inset-0 h-full w-full"
+    >
+      <div className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent_0%,#a855f7_50%,transparent_100%)] animate-[spin_3s_linear_infinite]" />
+    </motion.div>
+  );
+
+  return (
+    <Tag
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className={cn(
+        "relative flex h-min w-fit flex-col flex-nowrap items-center justify-center overflow-visible rounded-full border border-border/40 bg-background/50 p-px decoration-clone transition-all duration-500 hover:bg-transparent",
+        containerClassName
+      )}
+      {...props}
+    >
+      <div
+        className={cn(
+          "z-10 w-auto rounded-[inherit] bg-background px-4 py-2 text-foreground",
+          className
+        )}
+      >
+        {children}
+      </div>
+      <AnimatePresence mode="wait">
+        {hovered && movingBackground}
+      </AnimatePresence>
+    </Tag>
+  );
+};`} />
+
+## Props
+
+<PropsTable
+  data={[
+    { name: "children", type: "ReactNode", description: "The content inside the gradient container.", required: true },
+    { name: "containerClassName", type: "string", description: "Custom classes for the outer container." },
+    { name: "className", type: "string", description: "Custom classes for the inner container." },
+    { name: "as", type: "ElementType", default: "button", description: "The HTML element to render as." },
+    { name: "duration", type: "number", default: "1", description: "Animation duration." },
+    { name: "clockwise", type: "boolean", default: "true", description: "Direction of the gradient rotation." }
+  ]}
+/>
