@@ -65,11 +65,12 @@ export function SearchCommand({ className }: { className?: string }) {
                 onClick={() => setOpen(true)}
                 className={cn(
                     "relative inline-flex h-9 w-full items-center justify-start rounded-md border bg-muted/50 px-3 py-2 text-xs font-medium text-muted-foreground shadow-none transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+                    "justify-center sm:justify-start",
                     className
                 )}
             >
-                <Search className="mr-2 h-3.5 w-3.5" />
-                <span>Search components...</span>
+                <Search className="h-3.5 w-3.5 sm:mr-2" />
+                <span className="hidden sm:inline-flex">Search components...</span>
                 <kbd className="pointer-events-none absolute right-1.5 top-2 hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
                     <span className="text-xs">⌘</span>K
                 </kbd>
