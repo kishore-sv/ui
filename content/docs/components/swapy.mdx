@@ -149,9 +149,7 @@ export function DragHandle({
 
 ### Simple Example
 
-<CodeBlock title="components/swapy-demo.tsx" code={`"use client"
-
-import { useMemo, useState } from 'react';
+<CodeBlock title="components/swapy-usage.tsx" code={`import { useMemo, useState } from 'react';
 import { SlotItemMapArray, utils } from 'swapy';
 import {
   SwapyItem,
@@ -183,7 +181,7 @@ export function SwapyExample() {
       }}
     >
       <div className="grid grid-cols-3 gap-4">
-        {slottedItems.map(({ slotId, itemId }) => {
+        {slottedItems?.map(({ slotId, itemId }) => {
           const item = initialItems.find((i) => i.id === itemId);
           return (
             <SwapySlot key={slotId} id={slotId} className="h-32 border border-dashed rounded-lg flex items-center justify-center">

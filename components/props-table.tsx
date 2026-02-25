@@ -12,6 +12,11 @@ export interface PropDef {
 }
 
 export function PropsTable({ data }: { data: PropDef[] }) {
+    console.log("[PropsTable] Rendering with data:", {
+        hasData: !!data,
+        isTypeArray: Array.isArray(data),
+        length: data?.length
+    })
     return (
         <div className="my-6 w-full overflow-y-auto rounded-lg border border-border/50">
             <table className="w-full text-left text-sm">

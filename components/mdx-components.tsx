@@ -71,6 +71,12 @@ export function ComponentPreview({
 import { createHighlighter, type Highlighter } from "shiki"
 
 export function CodeBlock({ code, language = "tsx", title }: { code: string, language?: string, title?: string }) {
+    console.log(`[CodeBlock] Rendering "${title || "unnamed"}":`, {
+        hasCode: !!code,
+        codeType: typeof code,
+        codeLength: code?.length,
+        language
+    })
     const [hasCopied, setHasCopied] = React.useState(false)
     const [highlighter, setHighlighter] = React.useState<Highlighter | null>(null)
     const [highlightedCode, setHighlightedCode] = React.useState<string>("")
@@ -95,7 +101,7 @@ export function CodeBlock({ code, language = "tsx", title }: { code: string, lan
     }, [])
 
     React.useEffect(() => {
-        if (highlighter) {
+        if (highlighter && code && typeof code === "string") {
             try {
                 const html = highlighter.codeToHtml(code, {
                     lang: language,
@@ -104,7 +110,10 @@ export function CodeBlock({ code, language = "tsx", title }: { code: string, lan
                 setHighlightedCode(html)
             } catch (error) {
                 console.error("Failed to highlight code", error)
-                setHighlightedCode(`<pre><code>${code}</code></pre>`)
+                setHighlightedCode(`<pre><code>${(code || "")
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")}</code></pre>`)
             }
         }
     }, [code, language, highlighter])
@@ -132,7 +141,14 @@ export function CodeBlock({ code, language = "tsx", title }: { code: string, lan
             </div>
             <div
                 className="p-4 overflow-x-auto text-[13px] leading-relaxed font-mono [&>pre]:bg-transparent! [&>pre]:m-0!"
-                dangerouslySetInnerHTML={{ __html: highlightedCode || `<pre class="text-foreground"><code>${code}</code></pre>` }}
+                dangerouslySetInnerHTML={{
+                    __html: highlightedCode || `<pre class="text-foreground"><code>${(code || "")
+                        .replace(/&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;")
+                        .replace(/"/g, "&quot;")
+                        .replace(/'/g, "&#039;")}</code></pre>`
+                }}
             />
         </div>
     )
