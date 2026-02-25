@@ -3,7 +3,8 @@
 import * as React from "react"
 import { useRouter } from "next/navigation"
 import { type DialogProps } from "@radix-ui/react-dialog"
-import { Calculator, Calendar, CreditCard, Settings, Smile, User, Search, FileCode2, Sparkles } from "lucide-react"
+import { Search, Sparkles, User, CreditCard, Settings } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 import {
     CommandDialog,
@@ -17,7 +18,7 @@ import {
 } from "@/components/ui/command"
 import { docsConfig } from "@/config/docs"
 
-export function SearchCommand() {
+export function SearchCommand({ className }: { className?: string }) {
     const [open, setOpen] = React.useState(false)
     const router = useRouter()
 
@@ -38,16 +39,38 @@ export function SearchCommand() {
         command()
     }, [])
 
+    // Flatten all items for the command list
+    const allItems = React.useMemo(() => {
+        const items: { title: string; href: string; section: string }[] = []
+        docsConfig.forEach(section => {
+            section.items.forEach(item => {
+                if (item.href) {
+                    items.push({ title: item.title, href: item.href, section: section.title })
+                }
+                if (item.items) {
+                    item.items.forEach(subItem => {
+                        if (subItem.href) {
+                            items.push({ title: subItem.title, href: subItem.href, section: `${section.title} > ${item.title}` })
+                        }
+                    })
+                }
+            })
+        })
+        return items
+    }, [])
+
     return (
         <>
             <button
                 onClick={() => setOpen(true)}
-                className="relative inline-flex h-9 w-full items-center justify-start rounded-[0.5rem] bg-muted/50 text-sm font-medium text-muted-foreground shadow-none transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring sm:pr-12 md:w-40 lg:w-64"
+                className={cn(
+                    "relative inline-flex h-9 w-full items-center justify-start rounded-md border bg-muted/50 px-3 py-2 text-xs font-medium text-muted-foreground shadow-none transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+                    className
+                )}
             >
-                <Search className="mr-2 h-4 w-4 ml-2" />
-                <span className="hidden lg:inline-flex">Search components...</span>
-                <span className="inline-flex lg:hidden">Search...</span>
-                <kbd className="pointer-events-none absolute right-1.5 top-1.5 hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
+                <Search className="mr-2 h-3.5 w-3.5" />
+                <span>Search components...</span>
+                <kbd className="pointer-events-none absolute right-1.5 top-2 hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
                     <span className="text-xs">⌘</span>K
                 </kbd>
             </button>
@@ -55,16 +78,19 @@ export function SearchCommand() {
                 <CommandInput placeholder="Type a command or search..." />
                 <CommandList>
                     <CommandEmpty>No results found.</CommandEmpty>
-                    {docsConfig.map((group) => (
-                        <CommandGroup key={group.title} heading={group.title}>
-                            {group.items.map((item) => (
-                                <CommandItem key={item.href} onSelect={() => runCommand(() => router.push(item.href))}>
-                                    <Sparkles className="mr-2 h-4 w-4" />
-                                    <span>{item.title}</span>
-                                </CommandItem>
-                            ))}
-                        </CommandGroup>
-                    ))}
+                    <CommandGroup heading="Components">
+                        {allItems.map((item) => (
+                            <CommandItem
+                                key={item.href}
+                                onSelect={() => runCommand(() => router.push(item.href))}
+                                className="flex items-center"
+                            >
+                                <Sparkles className="mr-2 h-4 w-4 text-muted-foreground" />
+                                <span>{item.title}</span>
+                                <span className="ml-auto text-[10px] text-muted-foreground">{item.section}</span>
+                            </CommandItem>
+                        ))}
+                    </CommandGroup>
                     <CommandSeparator />
                     <CommandGroup heading="Settings">
                         <CommandItem onSelect={() => runCommand(() => router.push("/settings/profile"))}>
