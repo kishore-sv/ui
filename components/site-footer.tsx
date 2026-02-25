@@ -13,7 +13,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
                     <div className="flex flex-col gap-4">
                         <div className="flex items-center gap-2">
-                            <Link href="/" className="flex items-center space-x-2 p-2 rounded-xl bg-border w-fit">
+                            <Link href="/" className="flex items-center space-x-2 p-2 rounded-xl bg-muted w-fit">
                                 <HatGlasses className="h-6 w-6 text-primary" />
                             </Link>
                             <span className="font-bold text-xl tracking-tight">UI</span>
