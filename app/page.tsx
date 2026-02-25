@@ -15,8 +15,8 @@ export default function LandingPage() {
       <main className="flex-1">
         <section className="relative z-10 pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden">
           {/* Background effects */}
-          <div className="absolute inset-0 -z-10 h-full w-full bg-background bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
-            <div className="absolute inset-0 bg-gradient-to-tr from-background via-transparent to-primary/5"></div>
+          <div className="absolute inset-0 -z-10 h-full w-full bg-background bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]">
+            <div className="absolute inset-0 bg-linear-to-tr from-background via-transparent to-primary/5"></div>
           </div>
 
           <div className="container px-4 text-center">
@@ -38,7 +38,7 @@ export default function LandingPage() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="mx-auto max-w-4xl text-5xl font-extrabold tracking-tight sm:text-7xl lg:text-8xl"
             >
-              Build your next <span className="bg-gradient-to-r from-primary via-purple-500 to-indigo-400 bg-clip-text text-transparent">masterpiece</span> with motion
+              Build your next <span className="bg-linear-to-r from-primary via-chart-1 to-chart-2 bg-clip-text text-transparent">masterpiece</span> with motion
             </motion.h1>
 
             <motion.p
@@ -77,37 +77,37 @@ export default function LandingPage() {
           <div className="container px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <FeatureCard
-                icon={<Zap className="h-6 w-6 text-yellow-500" />}
+                icon={<Zap className="h-6 w-6 text-chart-1" />}
                 title="Lightning Fast"
                 description="Optimized for performance. Smooth 60fps animations that don't compromise on speed."
                 delay={0.1}
               />
               <FeatureCard
-                icon={<Shield className="h-6 w-6 text-blue-500" />}
+                icon={<Shield className="h-6 w-6 text-chart-2" />}
                 title="Accessible"
                 description="Built on top of Radix UI, ensuring your animations remain inclusive and usable."
                 delay={0.2}
               />
               <FeatureCard
-                icon={<Layout className="h-6 w-6 text-purple-500" />}
+                icon={<Layout className="h-6 w-6 text-chart-5" />}
                 title="Copy & Paste"
                 description="Just like shadcn/ui. Own your code. No complex dependencies or bloated packages."
                 delay={0.3}
               />
               <FeatureCard
-                icon={<Palette className="h-6 w-6 text-pink-500" />}
+                icon={<Palette className="h-6 w-6 text-chart-1" />}
                 title="Customizable"
                 description="Tailwind-first approach. Change colors, sizing, and timing with utility classes."
                 delay={0.4}
               />
               <FeatureCard
-                icon={<Sparkles className="h-6 w-6 text-indigo-500" />}
+                icon={<Sparkles className="h-6 w-6 text-chart-2" />}
                 title="Modern Stack"
                 description="Built with Next.js 15, React 19, and Tailwind CSS 4 for the ultimate developer experience."
                 delay={0.5}
               />
               <FeatureCard
-                icon={<ArrowRight className="h-6 w-6 text-green-500" />}
+                icon={<ArrowRight className="h-6 w-6 text-primary" />}
                 title="Growing Library"
                 description="New components added weekly. From simple transitions to complex interactive backgrounds."
                 delay={0.6}

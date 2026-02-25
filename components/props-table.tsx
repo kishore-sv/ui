@@ -28,7 +28,7 @@ export function PropsTable({ data }: { data: PropDef[] }) {
                         <tr key={prop.name} className="border-b border-border/50 last:border-0 hover:bg-muted/20">
                             <td className="p-4 font-mono text-xs text-primary font-semibold">
                                 {prop.name}
-                                {prop.required && <span className="ml-1 text-red-500">*</span>}
+                                {prop.required && <span className="ml-1 text-destructive">*</span>}
                             </td>
                             <td className="p-4 font-mono text-xs text-muted-foreground">{prop.type}</td>
                             <td className="p-4 font-mono text-xs text-muted-foreground">

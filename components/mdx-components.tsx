@@ -121,22 +121,22 @@ export function CodeBlock({ code, language = "tsx", title }: { code: string, lan
     }, [code])
 
     return (
-        <div className="relative my-6 rounded-xl border border-border/50 bg-zinc-950 overflow-hidden shadow-2xl">
-            <div className="flex items-center justify-between border-b border-white/5 bg-white/5 px-4 py-2.5">
+        <div className="dark relative my-6 rounded-xl border border-border/50 bg-card overflow-hidden shadow-2xl">
+            <div className="flex items-center justify-between border-b border-border/50 bg-muted/50 px-4 py-2.5">
                 <div className="flex items-center gap-2">
-                    <Terminal className="h-4 w-4 text-zinc-400" />
-                    <span className="text-xs font-medium text-zinc-400">{title || "Component Code"}</span>
+                    <Terminal className="h-4 w-4 text-muted-foreground" />
+                    <span className="text-xs font-medium text-muted-foreground">{title || "Component Code"}</span>
                 </div>
                 <button
                     onClick={onCopy}
-                    className="flex h-7 w-7 items-center justify-center rounded-md border border-white/10 bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white transition-colors"
+                    className="flex h-7 w-7 items-center justify-center rounded-md border border-border bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
                 >
                     {hasCopied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
                 </button>
             </div>
             <div
-                className="p-4 overflow-x-auto text-[13px] leading-relaxed font-mono [&>pre]:!bg-transparent [&>pre]:!m-0"
-                dangerouslySetInnerHTML={{ __html: highlightedCode || `<pre class="text-zinc-50"><code>${code}</code></pre>` }}
+                className="p-4 overflow-x-auto text-[13px] leading-relaxed font-mono [&>pre]:bg-transparent! [&>pre]:m-0!"
+                dangerouslySetInnerHTML={{ __html: highlightedCode || `<pre class="text-foreground"><code>${code}</code></pre>` }}
             />
         </div>
     )
