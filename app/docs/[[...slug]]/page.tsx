@@ -7,6 +7,9 @@ import { HoverBorderGradient } from "@/components/hover-border-gradient"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { AntigravityCanvas } from "@/components/antigravity-canvas"
+import { SwapyDemo } from "@/components/swapy-demo"
+import { SwapySimpleExample, SwapyTeamExample } from "@/components/swapy-examples"
+import { GridGenerator } from "@/components/grid-generator"
 
 interface DocPageProps {
     params: Promise<{
@@ -22,6 +25,10 @@ const components = {
     Badge,
     Separator,
     AntigravityCanvas,
+    SwapyDemo,
+    SwapySimpleExample,
+    SwapyTeamExample,
+    GridGenerator,
     PropsTable,
     h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
         <h1
@@ -43,7 +50,7 @@ const components = {
     ),
     p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
         <p
-            className={"leading-7 [&:not(:first-child)]:mt-6 text-muted-foreground"}
+            className={"leading-7 not-first:mt-6 text-muted-foreground"}
             {...props}
         />
     ),
@@ -57,13 +64,13 @@ const components = {
     ),
     th: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
         <th
-            className={"border border-border/40 bg-muted/50 px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right"}
+            className={"border border-border/40 bg-muted/50 px-4 py-2 text-left font-bold [[align=center]]:text-center [[align=right]]:text-right"}
             {...props}
         />
     ),
     td: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
         <td
-            className={"border border-border/40 px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right"}
+            className={"border border-border/40 px-4 py-2 text-left [[align=center]]:text-center [[align=right]]:text-right"}
             {...props}
         />
     ),

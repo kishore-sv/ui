@@ -1,0 +1,40 @@
+---
+title: Grid Generator
+description: A visual tool to build and export custom Tailwind CSS grid layouts with drag-and-drop and resizing.
+---
+
+# Grid Generator
+
+A visual tool to build and export custom Tailwind CSS grid layouts. Customize the grid structure, add items, and export the code directly.
+
+<ComponentPreview name="Grid Generator" code={`import { GridGenerator } from "@/components/grid-generator";
+
+export default function Demo() {
+  return <GridGenerator />;
+}`}>
+  <GridGenerator />
+</ComponentPreview>
+
+## Features
+
+- **Dynamic Grid**: Adjust columns, rows, and gaps in real-time.
+- **Drag & Drop**: Reposition any grid item by dragging it to a new cell.
+- **Visual Resizing**: Scale items spanning multiple rows or columns via the resize handle.
+- **Code Export**: Generate both HTML and JSX (React) code compatible with Tailwind CSS v3 and v4.
+
+## How to use
+
+1. **Configure**: Use the inputs at the top to set your grid dimensions and gap.
+2. **Add Items**: Click any cell with a `+` icon to place a new item.
+3. **Move**: Drag an item by its center to move it around the grid.
+4. **Resize**: Drag the bottom-right handle of an item to change its span.
+5. **Delete**: Click the `X` in the top right of an item to remove it.
+6. **Export**: Choose your preferred format (JSX/HTML) and click **Copy Code**.
+
+## Installation
+
+This tool depends on your local configuration of Tailwind CSS. You only need to copy the `GridGenerator` component to your project.
+
+<CodeBlock title="components/grid-generator.tsx" code={`// Reusable component code (refer to source below)`} />
+
+> Note: The full source code for this generator can be found in our repository. It uses React state and native mouse events for the interaction layer.

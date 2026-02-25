@@ -68,7 +68,7 @@ export function ComponentPreview({
 }
 
 
-import { getHighlighter, type Highlighter } from "shiki"
+import { createHighlighter, type Highlighter } from "shiki"
 
 export function CodeBlock({ code, language = "tsx", title }: { code: string, language?: string, title?: string }) {
     const [hasCopied, setHasCopied] = React.useState(false)
@@ -79,16 +79,9 @@ export function CodeBlock({ code, language = "tsx", title }: { code: string, lan
         let mounted = true
         async function initHighlighter() {
             try {
-                // Manually configure paths to use the root public directory
-                const hl = await getHighlighter({
-                    theme: "github-dark",
+                const hl = await createHighlighter({
+                    themes: ["github-dark"],
                     langs: ["tsx", "typescript", "javascript", "bash", "json", "markdown"],
-                    paths: {
-                        themes: '/themes/',
-                        languages: '/languages/',
-                        // Point to the root for wasm
-                        wasm: '/',
-                    }
                 })
                 if (mounted) {
                     setHighlighter(hl)
@@ -104,7 +97,10 @@ export function CodeBlock({ code, language = "tsx", title }: { code: string, lan
     React.useEffect(() => {
         if (highlighter) {
             try {
-                const html = highlighter.codeToHtml(code, { lang: language })
+                const html = highlighter.codeToHtml(code, {
+                    lang: language,
+                    theme: "github-dark"
+                })
                 setHighlightedCode(html)
             } catch (error) {
                 console.error("Failed to highlight code", error)

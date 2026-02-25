@@ -24,7 +24,7 @@ export function PropsTable({ data }: { data: PropDef[] }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((prop) => (
+                    {data && data.map((prop) => (
                         <tr key={prop.name} className="border-b border-border/50 last:border-0 hover:bg-muted/20">
                             <td className="p-4 font-mono text-xs text-primary font-semibold">
                                 {prop.name}

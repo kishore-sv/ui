@@ -109,6 +109,19 @@ export const docsConfig: NavSection[] = [
                         href: "/docs/components/animated-tracing-background",
                     },
                 ]
+            },
+            {
+                title: "Layout",
+                items: [
+                    {
+                        title: "Swapy",
+                        href: "/docs/components/swapy",
+                    },
+                    {
+                        title: "Grid Generator",
+                        href: "/docs/components/grid-generator",
+                    },
+                ]
             }
         ],
     },
