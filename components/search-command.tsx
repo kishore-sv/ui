@@ -17,6 +17,7 @@ import {
     CommandShortcut,
 } from "@/components/ui/command"
 import { docsConfig } from "@/config/docs"
+import { ContrastFolderDefaultIcon, ContrastPlusCircleIcon } from "mmk-icons"
 
 export function SearchCommand({ className }: { className?: string }) {
     const [open, setOpen] = React.useState(false)
@@ -86,7 +87,7 @@ export function SearchCommand({ className }: { className?: string }) {
                                 onSelect={() => runCommand(() => router.push(item.href))}
                                 className="flex items-center"
                             >
-                                <Sparkles className="mr-2 h-4 w-4 text-muted-foreground" />
+                                {item.section === "Getting Started" ? <ContrastFolderDefaultIcon className="mr-2 h-4 w-4 text-muted-foreground" /> : <ContrastPlusCircleIcon className="mr-2 h-4 w-4 text-muted-foreground" />}
                                 <span>{item.title}</span>
                                 <span className="ml-auto text-[10px] text-muted-foreground">{item.section}</span>
                             </CommandItem>

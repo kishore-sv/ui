@@ -31,11 +31,11 @@ export function SiteHeader() {
                             <SheetHeader>
                                 <SheetTitle className="text-left flex items-center gap-2">
                                     <HatGlasses className="h-6 w-6 text-primary" />
-                                    <span>Antigravity UI</span>
+                                    <span>Kishore UI</span>
                                 </SheetTitle>
                             </SheetHeader>
                             <nav className="flex flex-col gap-4 mt-8">
-                                <Link href="/docs" className="text-lg font-medium hover:text-primary transition-colors">Components</Link>
+                                <Link href="/components" className="text-lg font-medium hover:text-primary transition-colors">Components</Link>
                                 <Link href="/docs/installation" className="text-lg font-medium hover:text-primary transition-colors">Installation</Link>
                                 <Link href="/showcase" className="text-lg font-medium hover:text-primary transition-colors">Showcase</Link>
                                 <hr className="border-border/40" />
@@ -51,11 +51,12 @@ export function SiteHeader() {
                         </SheetContent>
                     </Sheet>
 
-                    <Link href="/" className="flex items-center space-x-2 p-2 rounded-xl bg-muted">
-                        <HatGlasses className="h-6 w-6 text-primary" />
+                    <Link href="/" className="flex items-center space-x-2 p-2">
+                        <HatGlasses className="size-10 text-primary rounded-xl bg-muted p-1" />
+                        <span className="font-bold text-lg">Kishore UI</span>
                     </Link>
                     <nav className="hidden items-center space-x-6 text-sm font-medium md:flex">
-                        <Link href="/docs" className="transition-colors hover:text-primary text-muted-foreground">Components</Link>
+                        <Link href="/components" className="transition-colors hover:text-primary text-muted-foreground">Components</Link>
                         <Link href="/docs/installation" className="transition-colors hover:text-primary text-muted-foreground">Installation</Link>
                         <Link href="/showcase" className="transition-colors hover:text-primary text-muted-foreground">Showcase</Link>
                     </nav>

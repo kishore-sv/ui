@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Github, Twitter, HatGlasses } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { GitHubColorIcon, StrokeXComIcon } from "mmk-icons"
 
 export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
     return (
@@ -16,10 +17,10 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
                             <Link href="/" className="flex items-center space-x-2 p-2 rounded-xl bg-muted w-fit">
                                 <HatGlasses className="h-6 w-6 text-primary" />
                             </Link>
-                            <span className="font-bold text-xl tracking-tight">UI</span>
+                            <span className="font-bold text-xl tracking-tight">Kishore UI</span>
                         </div>
                         <p className="text-sm text-muted-foreground max-w-xs">
-                            Premium animation components for your next project. Built with React, Tailwind CSS, and Framer Motion.
+                            Premium animation components for your next project. Built with React, Tailwind CSS, and Motion.
                         </p>
                     </div>
 
@@ -70,17 +71,17 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
                     <p className="text-sm text-muted-foreground">
                         © {new Date().getFullYear()} Kishore UI. All rights reserved.
                     </p>
-                    <p className="text-sm text-muted-foreground">Built by <Link href="https://kishore-sv.me" className="hover:text-primary underline" target="_blank" rel="noreferrer">kishore</Link> at Vercel. The source code is available on <Link href="https://github.com/kishore-sv/animations" className="hover:text-primary underline" target="_blank" rel="noreferrer">GitHub</Link>.</p>
+                    <p className="text-sm text-muted-foreground">Built by <Link href="https://kishore-sv.me" className="hover:text-primary underline" target="_blank" rel="noreferrer">kishore</Link> at Vercel. The source code is available on <Link href="https://github.com/kishore-sv/ui" className="hover:text-primary underline" target="_blank" rel="noreferrer">GitHub</Link>.</p>
                     <div className="flex items-center gap-4">
                         <Link href="https://github.com/kishore-sv" target="_blank" rel="noreferrer">
-                            <Button variant="ghost" size="icon" className="h-9 w-9 text-muted-foreground hover:text-foreground">
-                                <Github className="h-4 w-4" />
+                            <Button variant="ghost" size="icon" className="h-9 w-9 cursor-pointer text-muted-foreground hover:text-foreground">
+                                <GitHubColorIcon className="h-4 w-4" />
                                 <span className="sr-only">GitHub</span>
                             </Button>
                         </Link>
                         <Link href="https://x.com/kishore_sv_7" target="_blank" rel="noreferrer">
-                            <Button variant="ghost" size="icon" className="h-9 w-9 text-muted-foreground hover:text-foreground">
-                                <Twitter className="h-4 w-4" />
+                            <Button variant="ghost" size="icon" className="h-9 w-9 cursor-pointer text-muted-foreground hover:text-foreground">
+                                <StrokeXComIcon className="h-4 w-4" />
                                 <span className="sr-only">Twitter</span>
                             </Button>
                         </Link>
